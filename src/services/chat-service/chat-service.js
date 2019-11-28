@@ -1,4 +1,5 @@
 import pubSubLib from 'lib/pubSubLib';
+import ChatInterface from 'lib/chatInterface';
 /**
  * the chat service is the instance handler that communicates with an API
  * it provides all the events that will be attached and applied to the UI
@@ -26,7 +27,6 @@ export default class chatService extends pubSubLib {
     this.chatID = this.userID + chatRecipent;
   }
 
-  emitMessages(message, data) {
-    this.emit('message', data);
-  }
+  // emitMessage(message, data) {
+  // }
 }

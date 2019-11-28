@@ -1,6 +1,7 @@
 import React from 'react';
-import App from '../src/components/main/main';
 import { render } from 'enzyme';
+import App from '../src/components/main/main';
+
 
 describe('check app working', () => {
   it('start app', () => {

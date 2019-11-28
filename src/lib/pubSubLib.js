@@ -19,8 +19,8 @@ export default class pubSubLib {
     // liste the index of the array when you push it, and provide an instance to remove it
     const index = this.eventsList[event].push(callback) - 1;
     return {
-      unsubscribe() {
-        this.eventsLists[event].splice(index, 1);
+      unsubscribe: () => {
+        this.eventsList[event].splice(index, 1);
       },
     }
   }
