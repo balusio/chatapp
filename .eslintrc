@@ -40,6 +40,9 @@
     "import/resolver": {
       "webpack": {
         "config": "./tasks/webpack.config.base.js"
+      },
+      "node": {
+        "paths": ["src"]
       }
     }
   }

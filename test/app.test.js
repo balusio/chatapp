@@ -1,5 +1,5 @@
 import React from 'react';
-import App from '../src/main';
+import App from '../src/components/main/main';
 import { render } from 'enzyme';
 
 describe('check app working', () => {

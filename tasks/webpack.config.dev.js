@@ -18,6 +18,7 @@ module.exports = {
   },
   module: {
     rules: [
+      base.module.rules.eslint,
       base.module.rules.babel,
       base.module.rules.files,
       base.module.rules.style,
