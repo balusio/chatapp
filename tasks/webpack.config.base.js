@@ -54,7 +54,6 @@ module.exports = {
   },
   resolve: {
     alias: {
-      pages: path.resolve(__dirname, '../src/pages'),
       components: path.resolve(__dirname, '../src/components'),
       containers: path.resolve(__dirname, '../src/containers'),
       store: path.resolve(__dirname, '../src/store'),
