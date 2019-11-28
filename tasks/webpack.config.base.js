@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
  * this is base config file to be reused on production and webpack dev mode
  */
 module.exports = {
-  entry: '../app/index.js',
+  entry: path.resolve(__dirname,'../src/app.js'),
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'bundle.js',
@@ -54,11 +54,11 @@ module.exports = {
   },
   resolve: {
     alias: {
-      pages: path.resolve(__dirname, '../../app/pages'),
-      components: path.resolve(__dirname, '../../app/components'),
-      containers: path.resolve(__dirname, '../../app/containers'),
-      store: path.resolve(__dirname, '../../app/store'),
-      stylesheets: path.resolve(__dirname, '../../app/stylesheets'),
+      pages: path.resolve(__dirname, '../src/app/pages'),
+      components: path.resolve(__dirname, '../src/app/components'),
+      containers: path.resolve(__dirname, '../src/app/containers'),
+      store: path.resolve(__dirname, '../src/app/store'),
+      stylesheets: path.resolve(__dirname, '../src/app/stylesheets'),
     },
     extensions: ['.js','.jsx','.scss'],
     modules: ['node_modules'],
@@ -71,7 +71,7 @@ module.exports = {
         collapseWhitespace: true,
       },
       hash: true,
-      template: '../src/assets/index.ejs',
+      template: path.resolve(__dirname,'../src/assets/index.ejs'),
     }),
     extract: new MiniCssExtractPlugin({
       path:  'dist/',

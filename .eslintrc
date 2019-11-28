@@ -39,7 +39,7 @@
   "settings": {
     "import/resolver": {
       "webpack": {
-        "config": "./tasks/webpack/webpack.config.base.js"
+        "config": "./tasks/webpack.config.base.js"
       }
     }
   }
