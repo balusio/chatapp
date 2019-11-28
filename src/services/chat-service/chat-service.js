@@ -13,20 +13,28 @@ export default class chatService extends pubSubLib {
   constructor(params) {
     super(params);
     this.userID = params.userID;
-    // this.chatInterface = new chatIterface({
-    //   appid : '123456',
-    //   user  : this.userdID,
-    // });
+    this.chatInterface = new ChatInterface({
+      APP_ID: '123456',
+      HOST: 'nowhere.dev',
+    });
+    this.chatRooms = {};
   }
 
   /**
    * @param {string} chatRecipent calls the API service and create an instance chat and open the websocket that provides
    * the emit and recieve
    */
-  initChat(chatRecipent) {
-    this.chatID = this.userID + chatRecipent;
+  async startChatRoom(sender, reciper) {
+    const chatInstance = await this.chatInterface.startChannel(sender, reciper);
+    this.chatRooms[chatInstance.channelID] = chatInstance;
+    return this.chatRooms[chatInstance.channelID];
   }
 
-  // emitMessage(message, data) {
-  // }
+  /**
+   * @param {string} message
+   * @param {string} channel
+   */
+  emitMessage(message, channelID) {
+    this.chatRooms[channelID].channel.emit('message', message);
+  }
 }
