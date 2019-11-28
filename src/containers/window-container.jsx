@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Input from 'components/input/input-component';
+
 export default class WindowChatContainer extends Component {
   render() {
     return (

@@ -34,11 +34,15 @@ button{
   width: 100%;
   height: auto;
   display: block;
+  &--half{
+    width: 50%;
+    float: left;
+  }
 }
 
 .wrapper{
   margin: 0 auto;
-  max-width: 1400px;
+  max-width: 100%;
 }
 
 

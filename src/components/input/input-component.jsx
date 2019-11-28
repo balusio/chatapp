@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 /**
  * input component
  */
-export default (props) => {
+export default () => {
   /**
    * @listen Input user onChange and set his value if his length is bigger than 3 characters
    */
@@ -11,10 +11,9 @@ export default (props) => {
    * @listen Input password onChange and set his value if his length is bigger than 3 characters
    */
   const argumentValid = (arg) => ((arg && arg.length > 3) ? arg : null);
-  const { loginHandler } = props;
   useEffect(() => {
     const checkedMessage = argumentValid(message);
-    console.log(checkedMessage);
+    // console.log(checkedMessage);
     setMessage(checkedMessage);
   });
 
