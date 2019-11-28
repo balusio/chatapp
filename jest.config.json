@@ -1,0 +1,5 @@
+{
+  "verbose": true,
+  "testRegex": "((\\.|/*.)(test))\\.js?$",
+  "setupFilesAfterEnv": ["<rootDir>/test/setupTests.js"]
+}
