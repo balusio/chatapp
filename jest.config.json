@@ -1,5 +1,11 @@
 {
   "verbose": true,
   "testRegex": "((\\.|/*.)(test))\\.js?$",
-  "setupFilesAfterEnv": ["<rootDir>/test/setupTests.js"]
+  "setupFilesAfterEnv": ["<rootDir>/test/setupTests.js"],
+  "moduleNameMapper": {
+    "^lib(.*)": "<rootDir>/src/lib$1",
+    "^components(.*)": "<rootDir>/src/components",
+    "^pages(.*)": "<rootDir>/src/lib",
+    "^containers(.*)": "<rootDir>/src/lib"
+  } 
 }
