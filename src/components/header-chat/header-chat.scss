@@ -1,0 +1,42 @@
+@import '../../stylesheets/commons.scss';
+
+.h-chat{
+  width: 100%;
+  margin-bottom: auto;
+  height: 60px;
+  background: $primary-color;
+  border-radius: $border-radius;
+  color : #FFFFFF;
+  align-items: baseline;
+  align-content: center;
+  flex-direction: row;
+  display: flex;
+  padding: 10px 20px;
+  &___status-bulb{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: $secondary-color;
+    align-self: center;
+    margin-right: 10px;
+    &--online{
+      background-color: $third-color;
+    }
+  }
+  &__text-container {
+    align-self: center;
+    font-size: 10px;
+    p{
+      margin :0;
+      &:first-child{
+        font-size: 14px;
+      }
+    }
+    .typing{
+      color: $third-color;
+      align-self: center;
+      display: flex;
+    }
+  }
+
+}

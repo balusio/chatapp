@@ -4,14 +4,15 @@ import 'stylesheets/main.scss';
 
 
 const App = () => (
-  <>
-    <div className="container container--half">
+  <div className="container chat-wrapper">
+    <div className="container">
       <WindowChatContainer />
     </div>
-    <div className="container container--half">
+    <div className="container">
       <WindowChatContainer />
     </div>
-  </>
+  </div>
+
 );
 
 export default App;

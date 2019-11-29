@@ -30,13 +30,12 @@ button{
     cursor: pointer;
   }
 }
+
 .container{
   width: 100%;
-  height: auto;
-  display: block;
+  display: flex;
   &--half{
     width: 50%;
-    float: left;
   }
 }
 
