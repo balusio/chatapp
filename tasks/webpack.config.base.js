@@ -56,8 +56,9 @@ module.exports = {
     alias: {
       components: path.resolve(__dirname, '../src/components'),
       containers: path.resolve(__dirname, '../src/containers'),
-      store: path.resolve(__dirname, '../src/store'),
-      lib: path.resolve(__dirname, '../lib'),
+      services: path.resolve(__dirname, '../src/services'),
+      context: path.resolve(__dirname, '../src/context'),
+      lib: path.resolve(__dirname, '../src/lib'),
       stylesheets: path.resolve(__dirname, '../src/stylesheets'),
     },
     extensions: ['.js', '.jsx', '.scss'],

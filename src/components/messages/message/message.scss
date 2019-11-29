@@ -1,0 +1,46 @@
+@import '../../../stylesheets/commons.scss';
+.msg{
+  align-self: flex-start;
+  padding: 10px 10px;
+  max-width: 70%;
+  &__cont{
+    background-color: #ffffff;
+    @include box-shadow();
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    &--out{
+      color: #ffffff;
+      background-color:$primary-color;
+      box-shadow: none;
+      .msg__date{
+        align-self: flex-end;
+      }
+    }
+  }
+
+  &__tail{
+
+  }
+
+  &__txt{
+
+  }
+
+  &__date{
+    font-size: 8px;
+    position: relative;
+    align-self: flex-start;
+    padding-top: 5px;
+  }
+  &-out{
+    align-self: flex-end;
+  }
+  
+}
+
+
+
+

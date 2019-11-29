@@ -11,5 +11,6 @@ $margin: 10px;
 $columns: 12;
 $fall-back-font: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
 $base-margin: 16px;
-// CLASSES SHOULD BE DECLARED AFTER VARIABLES, ALSO MIXINS AND OTHER KIND OF OPERATORS
 
+// CLASSES SHOULD BE DECLARED AFTER VARIABLES, ALSO MIXINS AND OTHER KIND OF OPERATORS
+@import 'mixins';

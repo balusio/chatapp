@@ -20,7 +20,13 @@ export default () => {
 
   return (
     <div className="input-container">
-      <div contentEditable spellCheck className="input-text" type="text" onChange={(e) => { setMessage(e.target.value); }} />
+      <div
+        contentEditable
+        spellCheck
+        className="input-text"
+        type="text"
+        onChange={(e) => { setMessage(e.target.value); }}
+      />
       <button className="send-button" type="button">
         <svg
           xmlns="http://www.w3.org/2000/svg"

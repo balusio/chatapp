@@ -6,6 +6,7 @@
     "^lib(.*)": "<rootDir>/src/lib$1",
     "^components(.*)": "<rootDir>/src/components$1",
     "^containers(.*)": "<rootDir>/src/containers$1",
+    "^services(.*)": "<rootDir>/src/services$1",
     "\\.(scss|less)$": "identity-obj-proxy"
   } 
 }
