@@ -9,9 +9,15 @@ jobs:
         - run:
             name: update-npm
             command: 'sudo npm install -g npm@latest'
+        - restore_cache:
+            key: v1-dependency-cache-{{ checksum "package-lock.json" }}
         - run:
             name: install
             command: 'npm install'
+        - save_cache:
+            key: v1-dependency-cache-{{ checksum "package-lock.json" }}
+            paths: 
+              - ./node_modules
         - run: 
             name: linter
             command: npm run lint
