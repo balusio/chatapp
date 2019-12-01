@@ -17,11 +17,12 @@ const InputComponent = (props) => {
   /**
    * @listen Input user onChange and set his value if his length is bigger than 3 characters
    */
-  const [message, setMessage] = useState({});
+  const [message, setMessage] = useState('');
   /**
    * @emit message and clean data from the input element
    */
   const sendMessage = () => {
+    if (message.length <= 0) return;
     chatRoom.chat.emitEvent('message', {
       text: message,
       time: moment().format('LT'),
@@ -33,9 +34,9 @@ const InputComponent = (props) => {
 
   const setMessageAndTyping = () => {
     const text = textEl.current.innerHTML;
-    if (!text || !text.length > 3) return;
-    chatRoom.chat.emitEvent('typing', { user: props.channelReceiver }, chatRoomId);
     setMessage(text);
+    if (text.length < 3) return;
+    chatRoom.chat.emitEvent('typing', { user: props.channelReceiver }, chatRoomId);
   };
   /**
    * @param {object} e native event handling
