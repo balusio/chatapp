@@ -13,10 +13,7 @@ const MessageList = ({ messageList }) => {
       <div className="msg-wrppr__container">
         <ul>
           {
-          messages.map(({ text, mine, time }, key) => {
-            // eslint-disable-next-line no-unused-expressions
-            return <Message key={key} text={text} mine={mine} time={time} />
-          })
+          messages.map(({ text, mine, time }, key) => <Message key={key} text={text} mine={mine} time={time} />)
           }
         </ul>
       </div>

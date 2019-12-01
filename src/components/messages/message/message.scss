@@ -1,4 +1,17 @@
 @import '../../../stylesheets/commons.scss';
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+  0% {-webkit-transform: scale(0.1);}
+  100% {-webkit-transform: scale(1.0)}
+}
+
+/* Standard syntax */
+@keyframes appear {
+  0% {transform: scale(0.1);}
+  100% {transform: scale(1.0)}
+}
+
 .msg{
   align-self: flex-start;
   padding: 10px 10px;
@@ -8,25 +21,40 @@
     @include box-shadow();
     font-size: 14px;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
+    overflow-wrap: break-word;
+    -webkit-animation: appear 0.3s; /* Safari 4.0 - 8.0 */
+    animation: appear 0.3s;
+    transform-origin: bottom left;
+    position: relative;
+    &:after {
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 0px;
+      right: auto;
+      top: auto;
+      bottom: -6px;
+      border: 6px solid;
+      border-color: transparent transparent transparent #ffffff;
+  }
     &--out{
       color: #ffffff;
       background-color:$primary-color;
       box-shadow: none;
+      transform-origin: bottom right;
+      &:after{
+        left: auto;
+        right: 0px;
+        border-color: $primary-color $primary-color transparent transparent;
+      }
       .msg__date{
         align-self: flex-end;
       }
     }
-  }
-
-  &__tail{
-
-  }
-
-  &__txt{
-
   }
 
   &__date{

@@ -4,7 +4,6 @@ import Input from 'components/input/input-component';
 import HeaderChat from 'components/header-chat/header-chat-component';
 import MessageList from 'components/messages/message-list-component';
 import ChatContext from 'context/chat-context';
-
 import 'stylesheets/chat.scss'
 /**
  * WindowContainer Chat handles general events \
@@ -19,6 +18,8 @@ class WindowChatContainer extends Component {
       typing: false,
     }
     this.ChatRoom = {};
+    this.typingSocket = {};
+    this.messageSocket = {};
   }
 
   componentDidMount() {
@@ -31,10 +32,19 @@ class WindowChatContainer extends Component {
     });
   }
 
+  componentWillUnmount() {
+    // if the component comes out it should be unsubscribed from the chats preventing double instances and messages
+    this.typingSocket.unsubscribe();
+    this.messageSocket.unsubscribe();
+  }
+
+  /**
+   * subscribe to the chatroom messages
+   */
   startSubscriptions() {
-    this.ChatRoom.channel.on('typing', (data) => {
+    this.typingSocket = this.ChatRoom.channel.on('typing', (data) => {
       const { name } = this.context;
-      if (data.user === name) {
+      if (data.user === name && !this.state.typing) {
         this.setState({
           typing: true,
         })
@@ -45,7 +55,7 @@ class WindowChatContainer extends Component {
         }, 1200);
       }
     });
-    this.ChatRoom.channel.on('message', (data) => {
+    this.messageSocket = this.ChatRoom.channel.on('message', (data) => {
       const { name } = this.context;
       const message = {
         ...data,

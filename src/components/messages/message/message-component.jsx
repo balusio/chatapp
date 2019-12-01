@@ -7,7 +7,7 @@ const Message = (props) => {
   const refElm = useRef();
   const fromMsg = (mine) ? 'out' : 'incomming';
   useEffect(() => {
-    refElm.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+    refElm.current.scrollIntoView({ block: 'end' });
   });
   return (
     <li className={`msg msg-${fromMsg}`} ref={refElm}>

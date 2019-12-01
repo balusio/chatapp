@@ -24,12 +24,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="container chat-wrapper">
-        <div className="container">
+        <div className="container chat-wrapper__window">
           <ChatContext.Provider value={userA}>
             <WindowChatContainer channelReceiver={userB.name} />
           </ChatContext.Provider>
         </div>
-        <div className="container">
+        <div className="container chat-wrapper__window">
           <ChatContext.Provider value={userB}>
             <WindowChatContainer channelReceiver={userA.name} />
           </ChatContext.Provider>
