@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=dev webpack-dev-server --d --config tasks/webpack.config.dev.js",
-    "test": "node_modules/.bin/jest --watch --config jest.config.json"
+    "test": "node_modules/.bin/jest --watch --config jest.config.json",
+    "lint": "node_modules/.bin/eslint ./"
   },
   "repository": {
     "type": "git",
