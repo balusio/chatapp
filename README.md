@@ -8,7 +8,7 @@ This application is based on a chat app with 2 chat channels on the same browser
 
 The Structure of the application is explained bellow: 
 
-![alt text](https://github.com/balusio/gimmeya/blob/develop/app/assets/tiny-diagram.png)
+![alt text](https://github.com/balusio/chatapp/blob/develop/src/assets/tiny-diagram.png)
 
 ### Chat Service
 
