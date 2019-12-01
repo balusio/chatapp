@@ -4,7 +4,9 @@ import ChatService from 'services/chat-service/chat-service';
 import ChatContext from 'context/chat-context';
 import { APP_ID } from '../env';
 import 'stylesheets/main.scss';
-
+/**
+ * provide an instance with the user and the Chat Context
+ */
 const userA = {
   name: 'Rob',
   chat: new ChatService({
@@ -18,7 +20,6 @@ const userB = {
     userID: APP_ID,
   }),
 }
-
 class App extends React.Component {
   render() {
     return (

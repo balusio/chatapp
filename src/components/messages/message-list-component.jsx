@@ -5,23 +5,22 @@ import './message-list.scss';
 
 const MessageList = ({ messageList }) => {
   const [messages, setMessages] = useState([]);
-  let scrollElem = React.createRef();
   useEffect(() => {
-    if (messageList.length > 0) {
-      setMessages([...messageList])
-    }
-    scrollElem.scrollTo(0, scrollElem.scrollHeight + 400);
+    setMessages([...messageList])
   }, [messageList]);
   return (
     <div className="msg-wrppr">
-      <ul className="msg-wrppr__container" ref={(el) => { scrollElem = el }}>
-        {
-        messages.map(({ text, mine }, key) => {
-          // eslint-disable-next-line no-unused-expressions
-          return <Message key={key} text={text} mine={mine} />
-        })
-        }
-      </ul>
+      <div className="msg-wrppr__container">
+        <ul>
+          {
+          messages.map(({ text, mine, time }, key) => {
+            // eslint-disable-next-line no-unused-expressions
+            return <Message key={key} text={text} mine={mine} time={time} />
+          })
+          }
+        </ul>
+      </div>
+
     </div>
   );
 };

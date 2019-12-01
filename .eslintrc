@@ -10,7 +10,7 @@
     "arrow-body-style" : "off",
     "func-names": ["error", "never"],
     "react/no-danger": 0,
-    "no-console": ["warn", { "allow": ["warn", "error","log"] }],
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
     "no-confusing-arrow": 0,
     "semi": 0,
     "no-case-declarations": 0,

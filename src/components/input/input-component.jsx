@@ -1,22 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  useContext,
+  useRef,
+} from 'react';
+import PropTypes from 'prop-types';
+import moment from 'moment';
+import ChatContext from 'context/chat-context';
 import './input.scss';
 /**
- * input component
+ * input component handles messages inputs and send them trought the Context
  */
-export default () => {
+const InputComponent = (props) => {
+  const { chatRoomId } = props;
+  const textEl = useRef(null);
+  const chatRoom = useContext(ChatContext);
   /**
    * @listen Input user onChange and set his value if his length is bigger than 3 characters
    */
-  const [message, setMessage] = useState(null);
+  const [message, setMessage] = useState({});
   /**
-   * @listen Input password onChange and set his value if his length is bigger than 3 characters
+   * @emit message and clean data from the input element
    */
-  const argumentValid = (arg) => ((arg && arg.length > 3) ? arg : null);
-  useEffect(() => {
-    const checkedMessage = argumentValid(message);
-    // console.log(checkedMessage);
-    setMessage(checkedMessage);
-  });
+  const sendMessage = () => {
+    chatRoom.chat.emitEvent('message', {
+      text: message,
+      time: moment().format('LT'),
+      user: chatRoom.name,
+    }, chatRoomId);
+    setMessage('');
+    textEl.current.innerHTML = '';
+  };
+
+  const setMessageAndTyping = () => {
+    const text = textEl.current.innerHTML;
+    if (!text || !text.length > 3) return;
+    chatRoom.chat.emitEvent('typing', { user: props.channelReceiver }, chatRoomId);
+    setMessage(text);
+  };
+  /**
+   * @param {object} e native event handling
+   * @lisent the 'Enter key' and triggers
+   */
+  const checkKey = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
 
   return (
     <div className="input-container">
@@ -25,9 +55,11 @@ export default () => {
         spellCheck
         className="input-text"
         type="text"
-        onChange={(e) => { setMessage(e.target.value); }}
+        ref={textEl}
+        onInput={setMessageAndTyping}
+        onKeyPress={checkKey}
       />
-      <button className="send-button" type="button">
+      <button className="send-button" type="button" onClick={() => sendMessage()}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -46,3 +78,14 @@ export default () => {
     </div>
   )
 }
+
+InputComponent.defaultProps = {
+  chatRoomId: '',
+  channelReceiver: '',
+}
+
+InputComponent.propTypes = {
+  chatRoomId: PropTypes.string,
+  channelReceiver: PropTypes.string,
+}
+export default InputComponent;

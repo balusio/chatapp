@@ -26,6 +26,7 @@
   &__text-container {
     align-self: center;
     font-size: 10px;
+    position: relative;
     p{
       margin :0;
       &:first-child{
@@ -36,6 +37,8 @@
       color: $third-color;
       align-self: center;
       display: flex;
+      position: absolute;
+      top: 15px;
     }
   }
 

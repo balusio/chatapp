@@ -4,16 +4,19 @@ import PropTypes from 'prop-types';
 import './header-chat.scss';
 
 const HeaderChat = (props) => {
+  const { name } = props;
   return (
     <>
       <header className="h-chat">
         <div className="h-chat___status-bulb h-chat___status-bulb--online" />
         <div className="h-chat__text-container">
-          <p>{ (props.status) ? 'Online' : 'Offline' }</p>
-          <p className="typing">
-            Typing
-            <span>...</span>
-          </p>
+          <p>{ name }</p>
+          {(props.status) ? (
+            <p className="typing">
+              Typing
+              <span>...</span>
+            </p>
+          ) : '' }
         </div>
       </header>
     </>
@@ -23,9 +26,11 @@ const HeaderChat = (props) => {
 
 HeaderChat.defaultProps = {
   status: false,
+  name: '',
 }
 
 HeaderChat.propTypes = {
   status: PropTypes.bool,
+  name: PropTypes.string,
 }
 export default HeaderChat;

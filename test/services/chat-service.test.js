@@ -40,7 +40,7 @@ describe('start chat service', () => {
       channelA.unsubscribe();
       done();
     });
-    chatA.emitMessage('hello', privateChatA.channelID);
+    chatA.emitEvent('message', 'hello', privateChatA.channelID);
   });
 
   it('Should recieve a message from other channel instance B->A', async (done) => {
@@ -50,6 +50,6 @@ describe('start chat service', () => {
       channelB.unsubscribe();
       done();
     });
-    chatA.emitMessage('second message', privateChatB.channelID);
+    chatA.emitEvent('message', 'second message', privateChatB.channelID);
   });
 });
