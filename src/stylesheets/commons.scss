@@ -1,0 +1,16 @@
+
+$primary-color: #7781ff;
+$secondary-color: #5c63c3;
+$third-color: #feff75;
+$light-grey: #f4f5ff;
+$medium-grey: #c2c3c9;
+$dark-grey: #90938e;
+$border-radius: 4px;
+$column-width: 80px;
+$margin: 10px;
+$columns: 12;
+$fall-back-font: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+$base-margin: 16px;
+
+// CLASSES SHOULD BE DECLARED AFTER VARIABLES, ALSO MIXINS AND OTHER KIND OF OPERATORS
+@import 'mixins';

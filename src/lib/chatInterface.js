@@ -10,7 +10,6 @@ export default class ChatInterface extends PubSubLib {
       return ChatInterface.instance;
     }
     super(params);
-    ChatInterface.instance = this;
     this.appId = params.APP_ID;
     this.host = params.HOST;
     this.chatRooms = {
@@ -18,26 +17,34 @@ export default class ChatInterface extends PubSubLib {
     };
     this.users = [
       {
-        name: 'jorge',
+        name: 'Jorge',
         online: true,
         chatRooms: null,
         friends: ['pepito', 'pedro', 'mengano'],
       },
       {
-        name: 'pepito',
+        name: 'Pepito',
         online: true,
         chatRooms: null,
         friends: ['juan', 'pedro', 'mengano'],
       },
       {
-        name: 'mengano',
+        name: 'Mengano',
+        online: false,
+        chatRooms: null,
+      },
+      {
+        name: 'Laura',
+        online: false,
+        chatRooms: null,
+      },
+      {
+        name: 'Rob',
         online: false,
         chatRooms: null,
       },
     ];
-    // this.on(`chatService:${this.user}:message`, () => {
-    //   this.returnConnection();
-    // });
+    ChatInterface.instance = this;
     return this;
   }
 
@@ -46,19 +53,21 @@ export default class ChatInterface extends PubSubLib {
     if (appID === this.appID && userExist) {
       this.users.forEach((user) => {
         if (user.name === userId) {
+          // eslint-disable-next-line
           user.online = true;
         }
       })
       this.emit(`connect:${userId}`, true);
     }
   }
-  /**
-   * check if the channel is open, otherwise will
-   * @param {*} sender
-   * @param {*} recipent
-   */
 
+  /**
+   * check if the channel is open, otherwise will create a new Chat with the users
+   * @param {string} sender user who start the channel
+   * @param {string} recipent user who recieve the channel
+   */
   startChannel(sender, recipent) {
+    // make the channel a uniqueID channel to publish and subscribe events
     const channelID = [sender, recipent].sort().join('');
     return new Promise((resolve, reject) => {
       if (Object.prototype.hasOwnProperty.call(this.chatRooms, channelID)) {
